@@ -10,18 +10,13 @@
         color: #fff;
         padding: 30px;
       }
-      h1,
-      h2 {
+      h1 {
         font-size: 48px;
         text-transform: uppercase;
         letter-spacing: 2px;
         text-align: center;
       }
-      h2 {
-        font-size: 30px;
-      }
-      p,
-      li {
+      p {
         font-size: 16px;
         text-align: center;
       }
@@ -29,14 +24,7 @@
   </head>
   <body>
     <%- include('partials/nav') %>
-    <h1>Profile of User: <%= person %></h1>
-    <p><strong>Age: </strong><%= data.age %></p>
-    <p><strong>Gender: </strong><%= data.gender %></p>
-    <h2>Hobbies</h2>
-    <ul>
-      <% data.hobbies.forEach(function(item){ %>
-      <li><%= item %></li>
-      <% }); %>
-    </ul>
+    <h1>Welcome to the most awesome website in the planet</h1>
+    <p>You can't find anything like it on earth.</p>
   </body>
 </html>
