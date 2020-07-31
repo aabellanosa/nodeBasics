@@ -3,28 +3,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
-    <style>
-      body {
-        background: skyblue;
-        font-family: verdana;
-        color: #fff;
-        padding: 30px;
-      }
-      h1 {
-        font-size: 48px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        text-align: center;
-      }
-      p {
-        font-size: 16px;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="/assets/styles.css" />
   </head>
   <body>
     <%- include('partials/nav') %>
     <h1>Contact Us!</h1>
     <p>We love to hear from you</p>
+    <form id="contact-form">
+      <label for="who">Who do you want to contact</label>
+      <input type="text" name="who" value="<%= qs.name %>" /><br />
+      <label for="dept">Which department</label>
+      <input type="text" name="dept" value="<%= qs.dept %>" /><br />
+      <label for="email">Your email</label>
+      <input type="text" name="email" /><br />
+      <input type="submit" value="Submit" />
+    </form>
   </body>
 </html>

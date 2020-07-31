@@ -14,7 +14,7 @@ app.get("/", function (req, res) {
 app.get("/contact", function (req, res) {
   // res.send("this is the contact page"); //sending plaing text
   // res.sendFile(__dirname + "/contact.html");
-  res.render("contact", { qs: req.query });
+  res.render("contact");
 });
 
 app.get("/profile/:name", function (req, res) {
