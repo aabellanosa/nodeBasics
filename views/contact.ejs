@@ -9,7 +9,7 @@
     <%- include('partials/nav') %>
     <h1>Contact Us!</h1>
     <p>We love to hear from you</p>
-    <form id="contact-form">
+    <form id="contact-form" method="POST" action="/contact">
       <label for="who">Who do you want to contact</label>
       <input type="text" name="who" value="<%= qs.name %>" /><br />
       <label for="dept">Which department</label>
