@@ -1,0 +1,5 @@
+Not much done but:
+npm init  //for setting up the package.json
+npm install express -save  //for routing as depencies
+npm install ejs -save      //for templating as depencies
+npm install body-parser -save //for parsing post body data 
