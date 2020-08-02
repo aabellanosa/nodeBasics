@@ -13,28 +13,37 @@ var todoSchema = new mongoose.Schema({
 });
 
 var Todo = mongoose.model("Todo", todoSchema);
-var itemOne = Todo({ item: "buy cokes" }).save(function (err) {
-  if (err) throw err;
-  console.log("item saved");
-});
 
-var data = [{ item: "walk dog" }, { item: "walk cat" }, { item: "walk car" }];
+// var data = [{ item: "walk dog" }, { item: "walk cat" }, { item: "walk car" }];
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 module.exports = function (app) {
   app.get("/todo", function (req, res) {
-    res.render("todo", { todos: data });
+    //retrieve data from mongo.db and display it
+    Todo.find({}, function (err, data) {
+      if (err) throw err;
+      res.render("todo", { todos: data });
+    });
   });
 
   app.post("/todo", urlencodedParser, function (req, res) {
-    data.push(req.body);
-    res.json(data);
+    Todo(req.body).save(function (err, data) {
+      if (err) throw err;
+      res.json(data);
+    });
   });
 
   app.delete("/todo/:item", function (req, res) {
-    data = data.filter(function (todo) {
-      return todo.item.replace(/ /g, "-") !== req.params.item;
-    });
-    res.json(data);
+    Todo.find({ item: req.params.item.replace(/\-/g, " ") }).deleteOne(
+      function (err, data) {
+        if (err) throw err;
+        res.json(data);
+      }
+    );
+
+    // data = data.filter(function (todo) {
+    //   return todo.item.replace(/ /g, "-") !== req.params.item;
+    // });
+    // res.json(data);
   });
 };
