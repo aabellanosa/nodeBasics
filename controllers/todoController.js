@@ -1,4 +1,22 @@
 var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+
+//connect to atlas mongo.db formerly mlab
+mongoose.connect(
+  "mongodb+srv://test:test@cluster0.kkfi4.mongodb.net/tododb?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+//create a mongoose schema
+var todoSchema = new mongoose.Schema({
+  item: String,
+});
+
+var Todo = mongoose.model("Todo", todoSchema);
+var itemOne = Todo({ item: "buy cokes" }).save(function (err) {
+  if (err) throw err;
+  console.log("item saved");
+});
 
 var data = [{ item: "walk dog" }, { item: "walk cat" }, { item: "walk car" }];
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
